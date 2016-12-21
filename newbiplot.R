@@ -1,5 +1,5 @@
 
-newbiplot <- function(prcomp_obj, choices = 1:2, show_arrows = F, col = 1) {
+newbiplot <- function(pca, choices = 1:2, show_arrows = F, col = 1) {
   # algorith taken from stats:::biplot.prcomp (and biplot.default)
   scores <- pca$x
   lam <- pca$sdev[choices]

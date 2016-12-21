@@ -64,14 +64,16 @@ server <- function(input, output) {
   # table of iris data
   output$iris <- renderDataTable({
     iris[sample(nrow(iris)),]
-  }, options = list(pageLength = 5))
+  }, options = list(pageLength = 5, searching = F))
   
   # iris PCA
   output$pca4d <- renderPlot({
     M <- as.matrix(iris[-5])
     pca <- prcomp(M, retx = T, center = T, scale = T)
+    
     if(input$color) color <- iris$Species
     else color <- 1
+    
     newbiplot(pca, col = color, show_arrows = input$arrows)
   })
 }
